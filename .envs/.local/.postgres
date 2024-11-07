@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=abonchain
+POSTGRES_USER=zLQgpIrtiqGyFqJvHYKFwudDZOUYEPJv
+POSTGRES_PASSWORD=us9YgYvq9TC3epud5c1NvdK5U5BlbNoy7fEhmmO4Z2Is3mIZvhCFmA71C2CZ2YCj
