@@ -30,7 +30,8 @@ CACHES = {
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND", default="django.core.mail.backends.console.EmailBackend",
+    "DJANGO_EMAIL_BACKEND",
+    default="django.core.mail.backends.console.EmailBackend",
 )
 
 # django-debug-toolbar
@@ -60,3 +61,7 @@ INSTALLED_APPS += ["django_extensions"]
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CELERY_TASK_ALWAYS_EAGER = False
+CELERY_BROKER_URL = "redis://localhost:6379/0"  # or use RabbitMQ
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"

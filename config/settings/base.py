@@ -52,7 +52,7 @@ DATABASES = {
         default="postgres:///abonchain",
     ),
 }
-DATABASES["default"]["ATOMIC_REQUESTS"] = True
+DATABASES["default"]["ATOMIC_REQUESTS"] = False
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -83,11 +83,12 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.mfa",
     "allauth.socialaccount",
+    "rest_framework",
 ]
 
 LOCAL_APPS = [
     "abonchain.users",
-    # Your stuff: custom apps go here
+    "abonchain.arbitrage",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -285,3 +286,8 @@ SOCIALACCOUNT_FORMS = {"signup": "abonchain.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CELERY_TASK_ALWAYS_EAGER = False
+CELERY_BROKER_URL = "redis://localhost:6379/0"  # or use RabbitMQ
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
